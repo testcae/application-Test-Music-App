@@ -94,7 +94,28 @@ public class TestAlbum extends RESTService {
   // //////////////////////////////////////////////////////////////////////////////////////
   // Service methods (for inter service calls)
   // //////////////////////////////////////////////////////////////////////////////////////
-  
+  /**
+   * Test routing with get
+   * 
+   * @return HttpResponse with the returnString
+   */
+  @GET
+  @Path("/get")
+  @Produces(MediaType.TEXT_PLAIN)
+  @ApiOperation(
+		value = "Test get",
+		notes = "This is just to test routing with get")
+  @ApiResponses(
+		value = { @ApiResponse(
+				code = HttpURLConnection.HTTP_OK,
+				message = "OK"),
+				@ApiResponse(
+						code = HttpURLConnection.HTTP_UNAUTHORIZED,
+						message = "Unauthorized") })
+  public Response getTemplate() {
+	String returnString = "result";
+	return Response.ok().entity(returnString).build();
+  }
   
 
 }
